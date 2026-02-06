@@ -1,0 +1,21 @@
+name = "YaesuCAT"
+uuid = "f8c7e891-ca01-4a3b-9e17-d4f5a6b8c123"
+version = "0.1.0"
+authors = ["Mateusz K <mateusz.kaduk@gmail.com>"]
+
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+LibSerialPort = "a05a14c7-6e3b-5ba9-90a2-45558833e1df"
+
+[compat]
+Documenter = "1.16.1"
+LibSerialPort = "0.5.2"
+julia = "1.10"
+
+[extras]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+docs = ["Documenter"]
+test = ["Test"]

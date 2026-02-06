@@ -1,0 +1,31 @@
+name: Documenter
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and deploy documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1'
+
+      - name: Install dependencies
+        run: julia --project=@. -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Build documentation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
+        run: julia --project=@. docs/make.jl
